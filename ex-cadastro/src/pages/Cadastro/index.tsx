@@ -57,7 +57,7 @@ export default function ValidationTextFields() {
     <Header />    
     <Container className={classes.containerForm} maxWidth='lg'>     
       <div className={classes.paper}>
-        <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Tela de Cadastro</Typography>
+        <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Cadastro</Typography>
         <form>
         <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu nome"
           name="name"

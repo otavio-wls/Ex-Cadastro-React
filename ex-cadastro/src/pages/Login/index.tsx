@@ -99,9 +99,9 @@ export default function Login() {
         <div className={classes.root}>          
           <Container component='main' maxWidth='xs' className={classes.main}>
             <div className={classes.paper}>
-              <Typography component='h1' variant='h4' className={classes.title}>Tela de Login</Typography>
+              <Typography component='h1' variant='h4' className={classes.title}>Login</Typography>
               <form className={classes.form} noValidate>
-                <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Endereço de Email"
+                <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                   name="email"                                    
                   className={classes.textField}
                   onChange={e => setEmail(e.target.value)}
