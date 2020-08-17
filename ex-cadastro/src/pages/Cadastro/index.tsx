@@ -1,97 +1,92 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import api from '../../api/api';
 import Header from '../../Component/Header/index';
-import { TextField, makeStyles, Container, Typography, Button  } from '@material-ui/core';
+import { TextField, makeStyles, Container, Typography, Button, Grid  } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) =>({
   root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
-    },
+    height: '100vh',
+  },  
+  title:{
+    color: '#000080',
   },
-  paper:{
-    marginTop: theme.spacing(10),
+  image: {
+    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  paper: {
+    margin: theme.spacing(15, 6),
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  containerForm: {
-    marginTop: 150,
-    marginLeft: 0
-  },  
-  buttons:{
-    display: 'flex',        
+  main: {
+    marginBottom: theme.spacing(2),
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  textField:{
+    color: '#3fa7d6'
   },
   submit:{
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#3fa7d6',
-    color: '#fff',    
+    backgroundColor: '#00008B',
+    color: '#fff',
   },
-  facebook:{
-    margin: theme.spacing(3, 0, 2),
-    color: '#fff',    
-    backgroundColor: '#0d21a1'
+  optionsLogin: {
+    display: 'flex',
+    marginTop: '15px',    
+    alignItems: 'center',
+    width: '90%',
+    justifyContent: 'space-between'
   }, 
-}));
-
+}))
 export default function ValidationTextFields() {
   const classes = useStyles();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassWord] = useState('');
-  const [name, setName] = useState('');
-
-  async function cadastrar() {
-    if(email.length ===0 || password.length === 0 || name.length ===0 ){
-      alert('Os campos não podem ficarm em branco');      
-      return;
-    }
-    try{
-      const resposta = await api.post('users', {name: name, email: email, password: password})
-      console.log(resposta.data);
-      alert('Usuario cadastrado com sucesso');
-    } catch(error) {
-      alert(error);
-    }
-    
-  }
-
+  
   return (
-    <>
-    <Header />
-    
-    <Container className={classes.containerForm} maxWidth='lg'>     
-      <div className={classes.paper}>
-        <Typography component='h1' variant='h4'>Tela de Cadastro</Typography>
-        <form>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu Email"
-          name="email"
-          onChange={e => setEmail(e.target.value)}
-          autoComplete="email"
-          autoFocus/>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite sua Senha"
-          name="email"
-          onChange={e => setPassWord(e.target.value)}
-          autoComplete="email"
-          autoFocus/>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu Nome"
-          name="email"
-          onChange={e => setName(e.target.value)}
-          autoComplete="email"
-          autoFocus/>
-        </form>      
-        <div className={classes.buttons}>
-          <Button onClick={cadastrar} type='submit' className={classes.submit}>
-          Cadastrar</Button>
-          
-          <Button onClick={cadastrar} type='button' className={classes.facebook} >
-          Entre com o Facebook</Button>
-        </div>
-        
-      </div> 
-      
-    </Container>
-    </>
+    <Fragment>
+   <Grid container component="main" className={classes.root}>
+          <Grid item xs={false} sm={4} md={7} className={classes.image} />        
+        <div className={classes.root}>          
+          <Container component='main' maxWidth='xs' className={classes.main}>
+            <div className={classes.paper}>
+              <Typography component='h1' variant='h4' className={classes.title}>Tela de Login</Typography>
+              <form className={classes.form} noValidate>
+                <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Endereço de Email"
+                  name="email"                                    
+                  className={classes.textField}
+                  onChange={e => setEmail(e.target.value)}
+                  autoComplete="email"
+                  autoFocus/>
+                <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
+                  name="senha"
+                  className={classes.textField}
+                  onChange={e => setPassword(e.target.value)}
+                  autoComplete="senha"
+                  autoFocus/>
+              </form>
+              <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
+                Entrar</Button>
+                <div className={classes.optionsLogin}>
+                  <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
+                  <Link to='/cadastro'><Button color="primary">Cadastrar-me</Button></Link>
+                </div>       
+              <Box mt={5}>
+              <Copyright />
+            </Box>         
+            </div>        
+          </Container>
+        </div>        
+        </Grid>
+    </Fragment>
   );
 }
