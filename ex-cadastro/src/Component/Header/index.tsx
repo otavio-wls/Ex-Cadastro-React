@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles, Button } from '@material-ui/core';
-
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   '@global' : {
@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     display: 'flex',
-    backgroundColor: '#3fa7d6',    
+    backgroundColor: '#00008B',
   },
   title:{
     flexGrow: 1,
+    fontSize: '25px'
   },
   button:{
     color: '#fff',
@@ -28,9 +29,8 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <Typography className={classes.title}>Clinica Saúde 10</Typography>
-          <Button className={classes.button} color="inherit">Especialidades</Button>
-          <Button className={classes.button} color="inherit">Login</Button>
+          <Typography className={classes.title}>Photografy Premium</Typography>          
+          <Link to='/'><Button className={classes.button} color="inherit">Login</Button></Link>
         </Toolbar>
       </AppBar>  
     </div>
