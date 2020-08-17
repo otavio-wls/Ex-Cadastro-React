@@ -57,19 +57,19 @@ export default function ValidationTextFields() {
     <Header />    
     <Container className={classes.containerForm} maxWidth='lg'>     
       <div className={classes.paper}>
-        <Typography component='h1' variant='h4' style={{color: '#000080'}}>Tela de Cadastro</Typography>
+        <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Tela de Cadastro</Typography>
         <form>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu Nome"
+        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu nome"
           name="name"
           onChange={e => setName(e.target.value)}
           autoComplete="name"
           autoFocus/>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu Email"
+        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu email"
           name="email"
           onChange={e => setEmail(e.target.value)}
           autoComplete="email"
           autoFocus/>
-        <TextField variant='outlined' margin='normal'  type='password' required fullWidth id="email" label="Digite sua Senha"
+        <TextField variant='outlined' margin='normal'  type='password' required fullWidth id="email" label="Digite sua senha"
           name="email"
           onChange={e => setPassWord(e.target.value)}
           autoComplete="email"
