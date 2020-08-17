@@ -1,0 +1,15 @@
+.footer{
+  background: #3fa7d6;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.redesSociais{
+  display: flex;  
+}
+
+.redesSociais p{
+  margin-left: 10px;
+}

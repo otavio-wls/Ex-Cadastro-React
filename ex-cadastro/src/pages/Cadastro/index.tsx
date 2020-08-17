@@ -50,8 +50,9 @@ export default function ValidationTextFields() {
     try{
       const resposta = await api.post('users', {name: name, email: email, password: password})
       console.log(resposta.data);
+      alert('Usuario cadastrado com sucesso');
     } catch(error) {
-      console.log(error);
+      alert(error);
     }
     
   }

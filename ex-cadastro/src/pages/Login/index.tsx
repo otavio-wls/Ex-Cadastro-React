@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
 import Header from '../../Component/Header/index';
-
-import { CssBaseline , Container, Typography, makeStyles, TextField, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { CssBaseline , Container, Typography, makeStyles, TextField, Button, Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) =>({
@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) =>({
   paper: {
     marginTop: theme.spacing(20),
     display: 'flex',
+    
     flexDirection: 'column',
     alignItems: 'center'
   },
@@ -29,7 +30,13 @@ const useStyles = makeStyles((theme) =>({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: '#3fa7d6',
     color: '#fff',
-  }
+  },
+  optionsLogin: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '90%',
+    justifyContent: 'space-between'
+  }, 
 }))
 
 export default function Login() {
@@ -63,6 +70,7 @@ export default function Login() {
 
   return(
       <Fragment>   
+        <Grid container component="main" className={classes.root}>
         <Header />
         <div className={classes.root}>
           <CssBaseline />
@@ -83,10 +91,14 @@ export default function Login() {
               </form>
               <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
                 Entrar</Button>
+                <div className={classes.optionsLogin}>
+                  <a style={{cursor: 'pointer', textDecoration: 'underline', color: '#0d21a1'}}>Esqueceu sua Senha?</a>                  
+                  <Link to='/cadastro'><a style={{cursor: 'pointer', textDecoration: 'underline', color: '#0d21a1'}}>Cadastre-se</a></Link>
+                </div>                
             </div>        
           </Container>
-        </div>
-        
+        </div>        
+        </Grid>
       </Fragment>
   );
 }
