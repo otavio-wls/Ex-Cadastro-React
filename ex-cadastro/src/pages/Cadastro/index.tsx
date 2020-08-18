@@ -2,23 +2,28 @@ import React, { useState, Fragment } from 'react';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
 import Header from '../../Component/Header/index';
-import { TextField, makeStyles, Container, Typography, Button  } from '@material-ui/core';
+import Footer from '../../Component/Footer/index';
+import { TextField, makeStyles, Container, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: 200,
+      width: '85%',
     },
   },
   paper:{
-    marginTop: theme.spacing(10),
+    width: '100%',
+    minWidth: '100vh',
+    marginTop: '80px',    
+    marginBottom: '65px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   },
-  containerForm: {
+  containerForm: {    
     marginTop: 150,
+    minWidth: '100vh',
     marginLeft: 0,
   },  
   buttons:{
@@ -49,38 +54,52 @@ export default function ValidationTextFields() {
       toast.success('Cadastro feito com sucesso');
     } catch(error) {
       toast.error('Houve algum erro, tente novamente');      
-    }
-    
+    }    
   }
 
   return (
     <Fragment>
     <Header />    
-    <Container className={classes.containerForm} maxWidth='lg'>     
+    <Container className={classes.containerForm} maxWidth='xl'>     
       <div className={classes.paper}>
         <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Cadastro</Typography>
         <form>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu nome"
+        <TextField variant='outlined' margin='normal'  required fullWidth id="nome" label="Nome"
           name="name"
           onChange={e => setName(e.target.value)}
           autoComplete="name"
           autoFocus/>
-        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Digite seu email"
+        <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
           name="email"
           onChange={e => setEmail(e.target.value)}
           autoComplete="email"
           autoFocus/>
-        <TextField variant='outlined' margin='normal'  type='password' required fullWidth id="email" label="Digite sua senha"
-          name="email"
+        <TextField variant='outlined' margin='normal'  type='password' required fullWidth id="senha" label="Senha"
+          name="senha"
           onChange={e => setPassWord(e.target.value)}
-          autoComplete="email"
-          autoFocus/>        
+          autoComplete="senha"
+          autoFocus/>                
+        <TextField variant='outlined' margin='normal'   required fullWidth id="endereco" label="Endereço"
+          name="endereco"          
+          autoComplete="endereco"
+          autoFocus/>                
+        <TextField variant='outlined' margin='normal'  type='number' required  id="telefone" label="Telefone"
+          name="telefone"          
+          autoComplete="telefone"
+          style={{marginRight: '5px'}}
+          autoFocus/>                
+          <TextField variant='outlined' margin='normal'  type='number' required   id="celular" label="Celular"
+          name="celular"
+          style={{marginRight: '5px'}}          
+          autoComplete= "celular"
+          autoFocus/>                
         </form>      
         <div className={classes.buttons}>
           <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
         </div>        
       </div>       
     </Container>
+    <Footer />
     </Fragment>
   );
 }

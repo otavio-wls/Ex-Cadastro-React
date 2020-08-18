@@ -19,7 +19,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) =>({
   root: {
-    height: '100vh',
+    height: '100vh',    
   },  
   title:{
     color: '#000080',
@@ -32,15 +32,20 @@ const useStyles = makeStyles((theme) =>({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-  paper: {
-    margin: theme.spacing(15, 6),
-    width: '100%',
-    display: 'flex',
+  paper: {   
+    width: '100%',        
+    display: 'flex',    
     flexDirection: 'column',
     alignItems: 'center',
   },
   main: {
-    marginBottom: theme.spacing(2),
+    marginTop: '40%',  
+    marginRight: '31%',
+    marginLeft: '17%',
+  },  
+  formLogin:{
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -78,7 +83,7 @@ export default function Login() {
       const resposta = await api.post('users/login', {name: 'admin@', email: email , password: password})
         toast.success(`Seja Bem Vindo ${resposta.data.user.name}`);    
         console.log(resposta.data);
-        localStorage.setItem('token', resposta.data.token);                      
+        localStorage.setItem('token', resposta.data.token);                
       } catch(error) {
         toast.error('Houve algum erro, tente novamente');      
         console.log(error);
@@ -89,8 +94,9 @@ export default function Login() {
       <Fragment>   
         <CssBaseline />
         <Grid container component="main" className={classes.root}>
-          <Grid item xs={false} sm={4} md={7} className={classes.image} />        
-        <div className={classes.root}>          
+          <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
+          <Grid item xs={false} sm={4} md={5} justify='center' alignContent='center' className={classes.formLogin} >          
+          <div className={classes.root}>          
           <Container component='main' maxWidth='xs' className={classes.main}>
             <div className={classes.paper}>
               <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
@@ -119,7 +125,8 @@ export default function Login() {
             </Box>         
             </div>        
           </Container>
-        </div>        
+        </div>     
+        </Grid>            
         </Grid>
       </Fragment>
   );
