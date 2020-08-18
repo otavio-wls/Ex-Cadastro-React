@@ -48,11 +48,11 @@ const useStyles = makeStyles((theme) =>({
     marginRight: 'auto',
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(1),
   },
   textField:{
-    color: '#3fa7d6'
+    color: '#3fa7d6',
   },
   submit:{
     margin: theme.spacing(3, 0, 2),
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) =>({
     marginTop: '15px',    
     alignItems: 'center',
     width: '90%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   }, 
 }))
 
@@ -88,45 +88,45 @@ export default function Login() {
         toast.error('Houve algum erro, tente novamente');      
         console.log(error);
       };            
-  }
+    }
 
   return(
       <Fragment>   
         <CssBaseline />
-        <Grid container component="main" className={classes.root}>
-          <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
-          <Grid item xs={false} sm={4} md={5} justify='center' alignContent='center' className={classes.formLogin} >          
-          <div className={classes.root}>          
-          <Container component='main' maxWidth='xs' className={classes.main}>
-            <div className={classes.paper}>
-              <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
-              <form className={classes.form} noValidate>
-                <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
-                  name="email"                                    
-                  className={classes.textField}
-                  onChange={e => setEmail(e.target.value)}
-                  autoComplete="email"
-                  autoFocus/>
-                <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
-                  name="senha"
-                  className={classes.textField}
-                  onChange={e => setPassword(e.target.value)}
-                  autoComplete="senha"
-                  autoFocus/>
-              </form>
-              <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
-                Entrar</Button>
-                <div className={classes.optionsLogin}>
-                  <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
-                  <Link to='/cadastro'><Button color="primary">Cadastro</Button></Link>
-                </div>       
-              <Box mt={5}>
-              <Copyright />
-            </Box>         
-            </div>        
-          </Container>
-        </div>     
-        </Grid>            
+          <Grid container component="main" className={classes.root}>
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
+            <Grid item xs={false} sm={4} md={5} justify='center' alignContent='center' className={classes.formLogin} >          
+            <div className={classes.root}>          
+            <Container component='main' maxWidth='xs' className={classes.main}>
+              <div className={classes.paper}>
+                <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
+                <form className={classes.form} noValidate>
+                  <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
+                    name="email"                                    
+                    className={classes.textField}
+                    onChange={e => setEmail(e.target.value)}
+                    autoComplete="email"
+                    autoFocus/>
+                  <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
+                    name="senha"
+                    className={classes.textField}
+                    onChange={e => setPassword(e.target.value)}
+                    autoComplete="senha"
+                    autoFocus/>
+                </form>
+                <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
+                  Entrar</Button>
+                  <div className={classes.optionsLogin}>
+                    <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
+                    <Link to='/cadastro'><Button color="primary">Cadastro</Button></Link>
+                  </div>       
+                <Box mt={5}>
+                <Copyright />
+              </Box>         
+              </div>        
+            </Container>
+          </div>     
+         </Grid>            
         </Grid>
       </Fragment>
   );
