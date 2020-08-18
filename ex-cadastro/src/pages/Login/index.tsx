@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { CssBaseline , Container, Typography, makeStyles, TextField, Button, Grid, Box } from '@material-ui/core';
 
@@ -63,33 +64,26 @@ const useStyles = makeStyles((theme) =>({
 }))
 
 export default function Login() {
-  const classes = useStyles(); 
-    
+  const classes = useStyles();     
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function logar(){    
+  async function logar(){    
     if(email.length ===0 || password.length === 0 ){
-      alert('Os campos não podem ficarm em branco');      
+      toast.error('Os campos não podem ficar em branco');      
       return;
     }
-    api.post('users/login', {name: 'admin@', email: email , password: password})
-    .then(function(response){
-      alert(`Seja Bem Vindo ${response.data.user.name}`);    
-      console.log(response.data.token);
-      localStorage.setItem('token', response.data.token);            
-            
-    }).catch((err) => {
-      if(err.response.status === 400){
-        alert('Usuario ou Senha Inválidos');
-      }else{
-        alert(err.response.status);
-      }
-    });    
+    try{
+      const resposta = await api.post('users/login', {name: 'admin@', email: email , password: password})
+        toast.success(`Seja Bem Vindo ${resposta.data.user.name}`);    
+        console.log(resposta.data);
+        localStorage.setItem('token', resposta.data.token);                      
+      } catch(error) {
+        toast.error('Houve algum erro, tente novamente');      
+        console.log(error);
+      };            
   }
-
-
 
   return(
       <Fragment>   
@@ -99,7 +93,7 @@ export default function Login() {
         <div className={classes.root}>          
           <Container component='main' maxWidth='xs' className={classes.main}>
             <div className={classes.paper}>
-              <Typography component='h1' variant='h4' className={classes.title}>Login</Typography>
+              <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
               <form className={classes.form} noValidate>
                 <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                   name="email"                                    
@@ -118,7 +112,7 @@ export default function Login() {
                 Entrar</Button>
                 <div className={classes.optionsLogin}>
                   <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
-                  <Link to='/cadastro'><Button color="primary">Cadastrar-me</Button></Link>
+                  <Link to='/cadastro'><Button color="primary">Cadastro</Button></Link>
                 </div>       
               <Box mt={5}>
               <Copyright />

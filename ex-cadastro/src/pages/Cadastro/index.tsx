@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import api from '../../api/api';
+import { toast } from 'react-toastify';
 import Header from '../../Component/Header/index';
 import { TextField, makeStyles, Container, Typography, Button  } from '@material-ui/core';
 
@@ -39,15 +40,15 @@ export default function ValidationTextFields() {
 
   async function cadastrar() {
     if(email.length ===0 || password.length === 0 || name.length ===0 ){
-      alert('Os campos não podem ficarm em branco');      
+      toast.error('Os campos não podem ficarm em branco');      
       return;
     }
     try{
       const resposta = await api.post('users', {name: name, email: email, password: password})
       console.log(resposta.data);
-      alert('Usuario cadastrado com sucesso');
+      toast.success('Cadastro feito com sucesso');
     } catch(error) {
-      alert(error);
+      toast.error('Houve algum erro, tente novamente');      
     }
     
   }
