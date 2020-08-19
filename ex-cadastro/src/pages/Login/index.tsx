@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
+import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
-import { CssBaseline , Container, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
+import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) =>({
     backgroundPosition: 'center',
   },
   paper: {   
-    margin : theme.spacing(8,4),
+    margin : theme.spacing(9.5, 15),
     display : 'flex',
     flexDirection : 'column',
     alignItems : 'center',
@@ -76,12 +77,12 @@ export default function Login() {
 
   async function logar(){    
     if(email.length ===0 || password.length === 0 ){
-      toast.error('Os campos não podem ficar em branco');      
+      showToast({type: "error", message:'Os campos não podem ficar em branco'});      
       return;
     }
     try{
       const resposta = await api.post('users/login', {name: 'admin@', email: email , password: password})
-        toast.success(`Seja Bem Vindo ${resposta.data.user.name}`);    
+      showToast({type: 'success', message:`Seja Bem Vindo ${resposta.data.user.name}`});    
         console.log(resposta.data);
         localStorage.setItem('token', resposta.data.token);                
       } catch(error) {
@@ -92,10 +93,10 @@ export default function Login() {
 
   return(
       <Fragment>   
-        <CssBaseline />
+        <CssBaseline />        
           <Grid container component="main" className={classes.root}>
             <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
-            < Grid  item  xs = { 12 }  sm = { 8 }  md = { 5 }  component = { Paper }  elevation = { 6 }  square >
+            < Grid  item  xs = { 6 }  sm = { 8 }  md = { 5 }  component = { Paper }  elevation = { 6 }  square >
               <div className={classes.paper}>
                 <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
@@ -112,13 +113,14 @@ export default function Login() {
                     autoComplete="senha"
                     autoFocus/>
                 </form>
+                <ToastAnimated />
                 <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
                   Entrar</Button>
                   <div className={classes.optionsLogin}>
                     <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
                     <Link to='/cadastro'><Button color="primary">Cadastro</Button></Link>
                   </div>       
-                <Box mt={5}>
+              <Box mt={5}>
                 <Copyright />
               </Box>         
             </div>                             

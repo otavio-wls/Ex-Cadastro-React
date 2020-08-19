@@ -3,7 +3,7 @@ import api from '../../api/api';
 import { toast } from 'react-toastify';
 import Header from '../../Component/Header/index';
 import Footer from '../../Component/Footer/index';
-import { TextField, makeStyles, Container, Typography, Button } from '@material-ui/core';
+import { TextField, makeStyles, Grid, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper:{
-    minWidth: '100vh',
-    marginTop: '80px',    
+    width: '85%',
+    marginTop: '5px',    
+    marginLeft: '25px',
     marginBottom: '65px',
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   containerForm: {    
     minWidth: '100vh',
     marginTop: 150,    
-    marginLeft: 0,
+    marginLeft: 5,
   },  
   buttons:{
     display: 'flex',        
@@ -59,46 +60,48 @@ export default function ValidationTextFields() {
   return (
     <Fragment>
     <Header />    
-    <Container className={classes.containerForm} maxWidth='xl'>     
-          <div className={classes.paper}>
-            <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Cadastro</Typography>
-            <form>
-            <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
-              name="name"
-              onChange={e => setName(e.target.value)}
-              autoComplete="name"
-              autoFocus/>
-            <TextField variant='outlined' margin='normal' required fullWidth id="email" label="Email"
-              name="email"
-              onChange={e => setEmail(e.target.value)}
-              autoComplete="email"
-              autoFocus/>
-            <TextField variant='outlined' margin='normal' type='password' required fullWidth id="senha" label="Senha"
-              name="senha"
-              onChange={e => setPassWord(e.target.value)}
-              autoComplete="senha"
-              autoFocus/>                
-            <TextField variant='outlined' margin='normal' required fullWidth id="endereco" label="Endereço"
-              name="endereco"          
-              autoComplete="endereco"
-              autoFocus/>                
-            <TextField variant='outlined' margin='normal'  type='number' required  id="telefone" label="Telefone"
-              name="telefone"          
-              autoComplete="telefone"
-              style={{marginRight: '5px'}}
-              autoFocus/>                
-              <TextField variant='outlined' margin='normal'  type='number' required   id="celular" label="Celular"
-              name="celular"
-              style={{marginRight: '5px'}}          
-              autoComplete= "celular"
-              autoFocus/>                
-            </form>      
-            <div className={classes.buttons}>
-              <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
-            </div>        
-          </div>       
-        </Container>
-      <Footer />
-    </Fragment>
+    <Grid container component='main' className={classes.containerForm}>     
+    <Grid item xs={ 'auto' }  sm={ 'auto' }  md={ 'auto' }>
+      <div className={classes.paper}>
+        <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Cadastro</Typography>
+        <form>
+          <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
+            name="name"
+            onChange={e => setName(e.target.value)}
+            autoComplete="name"
+            autoFocus/>
+          <TextField variant='outlined' margin='normal' required fullWidth id="email" label="Email"
+            name="email"
+            onChange={e => setEmail(e.target.value)}
+            autoComplete="email"
+            autoFocus/>
+          <TextField variant='outlined' margin='normal' type='password' required fullWidth id="senha" label="Senha"
+            name="senha"
+            onChange={e => setPassWord(e.target.value)}
+            autoComplete="senha"
+            autoFocus/>                
+          <TextField variant='outlined' margin='normal' required fullWidth id="endereco" label="Endereço"
+            name="endereco"          
+            autoComplete="endereco"
+            autoFocus/>                
+          <TextField variant='outlined' margin='normal'  type='number' required  id="telefone" label="Telefone"
+            name="telefone"          
+            autoComplete="telefone"
+            style={{marginRight: '5px'}}
+            autoFocus/>                
+          <TextField variant='outlined' margin='normal'  type='number' required   id="celular" label="Celular"
+            name="celular"
+            style={{marginRight: '5px'}}          
+            autoComplete= "celular"
+            autoFocus/>                
+        </form>      
+        <div className={classes.buttons}>
+          <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
+        </div>        
+      </div>       
+      </Grid>
+    </Grid>
+    <Footer />
+  </Fragment>
   );
 }

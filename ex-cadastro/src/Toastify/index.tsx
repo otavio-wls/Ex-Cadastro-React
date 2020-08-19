@@ -7,7 +7,7 @@ const Toast = styled(ToastContainer)`
     background: 'rgb(51, 102, 255)';
   }
 .Toastify__toast--success {
-    background: 'rgb(51, 187, 102)';
+    background: 'rgb(0, 0, 139)';
   }
 .Toastify__toast--warning {
     background: 'rgb(254, 255, 20)';

@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import {Auth} from '../Component/Auth/auth';
+import { isLogin } from '../Component/Auth/auth';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Login from '../pages/Login';
+import Clients from '../pages/Client';
 import Cadastro from '../pages/Cadastro';
-
-
 
  const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    Auth()? (
+    isLogin()? (
       <Component {...props} />
-    ) : (
-      <Redirect to={{ pathname: '/certo', state: { from: props.location } }} />
-    )
+    ) : <Redirect to='/clients'/>    
     )} />
   );
-
 
 export default function Routes() {
 
@@ -23,7 +19,7 @@ export default function Routes() {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Login}/>
-           <PrivateRoute path='/certo' component={() => <h1>Você está logado</h1>} /> 
+           <PrivateRoute path='/clients' component={Clients} /> 
           <Route exact path='/cadastro' component={Cadastro} />
         </Switch>
       </BrowserRouter>
