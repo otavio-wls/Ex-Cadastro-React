@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
-import { toast, ToastContainer } from 'react-toastify';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
@@ -86,7 +85,7 @@ export default function Login() {
         console.log(resposta.data);
         localStorage.setItem('token', resposta.data.token);                
       } catch(error) {
-        toast.error('Houve algum erro, tente novamente');      
+        showToast({type: 'error', message: 'Houve algum erro, tente novamente'});      
         console.log(error);
       };         
       setEmail('');

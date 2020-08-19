@@ -6,10 +6,10 @@ import { Facebook, Instagram, Twitter } from '@material-ui/icons';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" style={{textAlign: 'center'}}>
+    <Typography variant="body2" color="textSecondary" style={{textAlign: 'center', color:'#ffffff'}}>
       {'Copyright © '}
       <Link  color="inherit" href="https://material-ui.com/">
-        Your Website
+        Photografy Premium 2020
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',    
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    backgroundColor: '#00008B',     
   },  
   redesSociais:{
     display: 'flex',
+    color: '#ffffff',
     marginLeft: '50%',
     marginRight: '50%',
     alignItems: 'center',
@@ -48,7 +48,7 @@ export default function Footer() {
     <CssBaseline />    
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Typography variant="body1" style={{textAlign: 'center'}}>My sticky footer can be found here.</Typography>
+        <Typography variant="body1" style={{textAlign: 'center', color:'#ffffff'}}>Photografy Premium</Typography>
         <Copyright />
         <div className={classes.redesSociais}>
           <a href='https://pt-br.facebook.com/'><p><Facebook/></p></a>
