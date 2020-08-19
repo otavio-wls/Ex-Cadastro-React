@@ -2,13 +2,13 @@ import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { CssBaseline , Container, Typography, makeStyles, TextField, Button, Grid, Box } from '@material-ui/core';
+import { CssBaseline , Container, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="#">
+      <Link color="inherit" to="#">
         Photografy Premium
       </Link>{' '}
       {new Date().getFullYear()}
@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) =>({
     backgroundPosition: 'center',
   },
   paper: {   
-    width: '100%',        
-    display: 'flex',    
-    flexDirection: 'column',
-    alignItems: 'center',
+    margin : theme.spacing(8,4),
+    display : 'flex',
+    flexDirection : 'column',
+    alignItems : 'center',
   },
   main: {
     marginTop: '40%',  
@@ -95,9 +95,7 @@ export default function Login() {
         <CssBaseline />
           <Grid container component="main" className={classes.root}>
             <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
-            <Grid item xs={false} sm={4} md={5} justify='center' alignContent='center' className={classes.formLogin} >          
-            <div className={classes.root}>          
-            <Container component='main' maxWidth='xs' className={classes.main}>
+            < Grid  item  xs = { 12 }  sm = { 8 }  md = { 5 }  component = { Paper }  elevation = { 6 }  square >
               <div className={classes.paper}>
                 <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
@@ -123,9 +121,7 @@ export default function Login() {
                 <Box mt={5}>
                 <Copyright />
               </Box>         
-              </div>        
-            </Container>
-          </div>     
+            </div>                             
          </Grid>            
         </Grid>
       </Fragment>
