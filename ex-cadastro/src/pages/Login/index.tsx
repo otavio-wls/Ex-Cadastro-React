@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
+import { toast } from 'react-toastify';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
@@ -80,10 +81,10 @@ export default function Login() {
       return;
     }
     try{
-      const resposta = await api.post('users/login', {name: 'admin@', email: email , password: password})
-      showToast({type: "success", message: `Seja bem vindo, ${resposta.data.user.name}`});    
-        console.log(resposta.data);
-        localStorage.setItem('token', resposta.data.token);                
+      const response = await api.post('users/login', {name: 'admin@', email: email , password: password})
+      toast.success(`Seja bem vindo, ${response.data.user.name}`, {hideProgressBar: true, closeOnClick: true, autoClose: 5000});    
+        console.log(response.data);
+        localStorage.setItem('token', response.data.token);                
       } catch(error) {
         showToast({type: 'error', message: 'Houve algum erro, tente novamente'});      
         console.log(error);
@@ -105,7 +106,7 @@ export default function Login() {
                     name="email"   
                     value={email}    
                     error={email ===''}
-                    helperText={email ===''? 'O campo não pode ficar em branco': ''}
+                    helperText={email ===''? 'O email não pode ficar em branco': ''}
                     className={classes.textField}
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
@@ -114,7 +115,7 @@ export default function Login() {
                     name="senha"
                     value={password}
                     error={password ===''}
-                    helperText={password ===''? 'O campo não pode ficar em branco': ''}
+                    helperText={password ===''? 'A senha não pode ficar em branco': ''}
                     className={classes.textField}
                     onChange={e => setPassword(e.target.value)}
                     autoComplete="senha"
