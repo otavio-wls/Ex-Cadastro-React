@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 const Toast = styled(ToastContainer)`
   .Toastify__toast--info {
     background: 'rgb(51, 102, 255)';

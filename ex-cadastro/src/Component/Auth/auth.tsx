@@ -7,9 +7,6 @@ export  const  isLogin  =  ( )  =>  {
     return  false ;
 }
 
-
-
-
 // export  const Auth = () => {
 //     const token = localStorage.getItem('token');
 //     console.log(token);

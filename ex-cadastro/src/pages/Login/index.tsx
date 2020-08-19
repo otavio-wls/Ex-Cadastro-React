@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
@@ -76,24 +76,26 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   async function logar(){    
-    if(email.length ===0 || password.length === 0 ){
+    if(email.length ===0 || password.length === 0 ){      
       showToast({type: "error", message:'Os campos não podem ficar em branco'});      
       return;
     }
     try{
       const resposta = await api.post('users/login', {name: 'admin@', email: email , password: password})
-      showToast({type: 'success', message:`Seja Bem Vindo ${resposta.data.user.name}`});    
+      showToast({type: "success", message: `Seja bem vindo, ${resposta.data.user.name}`});    
         console.log(resposta.data);
         localStorage.setItem('token', resposta.data.token);                
       } catch(error) {
         toast.error('Houve algum erro, tente novamente');      
         console.log(error);
-      };            
+      };         
+      setEmail('');
+      setPassword('');
     }
 
   return(
       <Fragment>   
-        <CssBaseline />        
+        <CssBaseline />             
           <Grid container component="main" className={classes.root}>
             <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
             < Grid  item  xs = { 6 }  sm = { 8 }  md = { 5 }  component = { Paper }  elevation = { 6 }  square >
@@ -101,13 +103,19 @@ export default function Login() {
                 <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
-                    name="email"                                    
+                    name="email"   
+                    value={email}    
+                    error={email ===''}
+                    helperText={email ===''? 'O campo não pode ficar em branco': ''}
                     className={classes.textField}
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
                     autoFocus/>
                   <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
                     name="senha"
+                    value={password}
+                    error={password ===''}
+                    helperText={password ===''? 'O campo não pode ficar em branco': ''}
                     className={classes.textField}
                     onChange={e => setPassword(e.target.value)}
                     autoComplete="senha"
