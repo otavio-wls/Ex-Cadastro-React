@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
-import { toast } from 'react-toastify';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
+import {withRouter,useHistory} from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
 
 function Copyright() {
@@ -68,8 +68,10 @@ const useStyles = makeStyles((theme) =>({
     justifyContent: 'space-between',
   }, 
 }))
+const  Login = () => {
 
-export default function Login() {
+  const history = useHistory();
+
   const classes = useStyles();     
   
   const [email, setEmail] = useState('');
@@ -82,29 +84,31 @@ export default function Login() {
     }
     try{
       const response = await api.post('users/login', {name: 'admin@', email: email , password: password})
-      toast.success(`Seja bem vindo, ${response.data.user.name}`, {hideProgressBar: true, closeOnClick: true, autoClose: 5000});    
-        console.log(response.data);
-        localStorage.setItem('token', response.data.token);                
+      showToast({type: 'success', message: `Seja bem vindo, ${response.data.user.name}`})
+      console.log(response.data);
+      localStorage.setItem('token', response.data.token);   
+      history.push('/clients');              
       } catch(error) {
         showToast({type: 'error', message: 'Houve algum erro, tente novamente'});      
         console.log(error);
       };         
       setEmail('');
-      setPassword('');
+      setPassword('');      
     }
 
   return(
       <Fragment>   
+        <ToastAnimated />
         <CssBaseline />             
           <Grid container component="main" className={classes.root}>
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />                            
-            < Grid  item  xs = { 6 }  sm = { 8 }  md = { 5 }  component = { Paper }  elevation = { 6 }  square >
+            <Grid item xs={false} sm={false} md={6} className={classes.image} />                            
+            < Grid  item  xs = { 12}  sm = { 12 }  md = { 6 }  component = { Paper }  elevation = { 6 }  square >
               <div className={classes.paper}>
                 <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                     name="email"   
-                    value={email}    
+                    value={email}                      
                     error={email ===''}
                     helperText={email ===''? 'O email não pode ficar em branco': ''}
                     className={classes.textField}
@@ -137,3 +141,6 @@ export default function Login() {
       </Fragment>
   );
 }
+
+
+export default withRouter(Login);

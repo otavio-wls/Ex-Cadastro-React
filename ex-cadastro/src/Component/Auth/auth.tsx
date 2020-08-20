@@ -3,7 +3,7 @@ const  Auth  =  localStorage.getItem('token') ;
 export  const  isLogin  =  ( )  =>  {
     if  (Auth )  {
         return  true ;
-    }
+    }else 
     return  false ;
 }
 

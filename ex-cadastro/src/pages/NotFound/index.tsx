@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) =>({
   divContainer:{
     width: '95%',
     justifyContent: 'space-between',
-    marginTop: '75px',    
+    marginTop: '150px',    
     display: 'flex',    
   },
   text:{

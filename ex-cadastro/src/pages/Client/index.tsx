@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../api/api';
-import { makeStyles, TableContainer, TableCell, Table, TableBody, TableRow, TableHead, Paper } from '@material-ui/core';
+import { CssBaseline, makeStyles, TableContainer, TableCell, Table, TableBody, TableRow, TableHead, Paper } from '@material-ui/core';
 import Header from '../../Component/Header/index';
+import Footer from '../../Component/Footer/index';
+import {withRouter} from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) =>({
   styleCliente:{
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme) =>({
   },
 }));
 
-export default function Clients() {
+function Clients() {
   const classes = useStyles();
   const [clients, setClients] = useState<Array<any>>([]);
 
@@ -42,10 +45,11 @@ export default function Clients() {
 
   return(
     <div>  
+      <CssBaseline />
       <Header />      
       <h1 style={{marginTop: '100px', marginLeft: '10px', marginBottom: '10px'}}>Lista de Clientes</h1>  
       <div className={classes.divTable}>      
-      <TableContainer component={Paper}>
+      <TableContainer style={{flexGrow: 0}} component={Paper}>
             <Table className={classes.table} size='small' aria-label='a dense table'>
               <TableHead>
                 <TableRow>
@@ -66,6 +70,8 @@ export default function Clients() {
             </Table>        
          </TableContainer>           
         </div>
+        <Footer />
     </div>
   );
 }
+export default withRouter(Clients);
