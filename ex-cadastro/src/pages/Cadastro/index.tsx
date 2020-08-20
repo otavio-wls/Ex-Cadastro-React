@@ -80,13 +80,13 @@ export default function ValidationTextFields() {
             name="senha"
             onChange={e => setPassWord(e.target.value)}
             autoComplete="senha"
-            autoFocus/>                
+            autoFocus/>
           <TextField variant='outlined' margin='normal' required fullWidth id="endereco" label="Endereço"
-            name="endereco"          
+            name="endereco"
             autoComplete="endereco"
             autoFocus/>                
           <TextField variant='outlined' margin='normal'  type='number' required  id="telefone" label="Telefone"
-            name="telefone"          
+            name="telefone"
             autoComplete="telefone"
             style={{marginRight: '5px'}}
             autoFocus/>                

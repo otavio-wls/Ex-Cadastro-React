@@ -94,7 +94,7 @@ const  Login = () => {
       };         
       setEmail('');
       setPassword('');      
-    }
+  }
 
   return(
       <Fragment>   
@@ -107,10 +107,10 @@ const  Login = () => {
                 <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
-                    name="email"   
-                    value={email}                      
+                    name="email"
+                    value={email}
                     error={email ===''}
-                    helperText={email ===''? 'O email não pode ficar em branco': ''}
+                    helperText={email === ''? 'O email não pode ficar em branco': ''}
                     className={classes.textField}
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
