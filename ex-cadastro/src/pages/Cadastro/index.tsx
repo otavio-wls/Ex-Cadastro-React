@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   containerForm: {    
     minWidth: '100vh',
+    flex: 1,
     marginTop: 150,    
     marginLeft: 5,
   },  
