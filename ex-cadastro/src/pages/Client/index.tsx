@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../api/api';
 import { makeStyles, TableContainer, TableCell, Table, TableBody, TableRow, TableHead, Paper } from '@material-ui/core';
 import Header from '../../Component/Header/index';
@@ -9,14 +9,22 @@ const useStyles = makeStyles((theme) =>({
     marginTop: '30px',
     listStyle: 'none',
   },
+  divTable:{
+    width: '75%',
+    marginLeft: '10px',
+  },
   table: {
-    minWidth: 650,
+    minWidth: 450,
   },
 }));
 
 export default function Clients() {
   const classes = useStyles();
   const [clients, setClients] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    getClients();
+  }, []);
 
   async function getClients(){
   
@@ -29,13 +37,14 @@ export default function Clients() {
       console.log(client);
     } catch(error) {
       console.log(error);
-    };          
+    };              
   }          
 
   return(
     <div>  
-      <Header />
-      <h1 style={{marginTop: '100px'}}>Lista de Clientes</h1>  
+      <Header />      
+      <h1 style={{marginTop: '100px', marginLeft: '10px', marginBottom: '10px'}}>Lista de Clientes</h1>  
+      <div className={classes.divTable}>      
       <TableContainer component={Paper}>
             <Table className={classes.table} size='small' aria-label='a dense table'>
               <TableHead>
@@ -55,17 +64,8 @@ export default function Clients() {
                 ))} 
               </TableBody>            
             </Table>        
-         </TableContainer>
-
-
-          {/* // <ul key={cliente.id} className={classes.styleCliente}>
-          //   <li>Id do cliente{cliente.id}</li>
-          //   <li>Nome do cliente{cliente.name}</li>
-          //   <li>CNPJ do cliente{cliente.cnpj}</li>            
-          // </ul>       */}
-        
-      
-      <button onClick={getClients}>Importar Clientes</button>
+         </TableContainer>           
+        </div>
     </div>
   );
 }
