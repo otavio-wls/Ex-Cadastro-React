@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   paper:{
     width: '85%',
     marginTop: '5px',    
-    marginLeft: '25px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginBottom: '65px',
     display: 'flex',
     flexDirection: 'column',
@@ -62,7 +63,7 @@ export default function ValidationTextFields() {
     <Fragment>
     <Header />    
     <Grid container component='main' className={classes.containerForm}>     
-    <Grid item xs={ 'auto' }  sm={ 'auto' }  md={ 'auto' }>
+    <Grid item xs={10}  sm={ 'auto' }  md={ 'auto' }>
       <div className={classes.paper}>
         <Typography component='h1' variant='h4' style={{color: '#00008B'}}>Cadastro</Typography>
         <form>
