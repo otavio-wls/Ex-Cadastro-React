@@ -5,7 +5,6 @@ import isLogin   from '../Component/Auth/auth';
 import Clients from '../pages/Client';
 import Cadastro from '../pages/Cadastro';
 import NotFound from '../pages/NotFound/index';
-import {history} from '../history';
 
 const PrivateRoute =({component: Component, ...rest}) => (
   <Route
@@ -23,7 +22,7 @@ const PrivateRoute =({component: Component, ...rest}) => (
 export default function Routes() {
 
   return(
-    <BrowserRouter history={history}>
+    <BrowserRouter >
       <Switch>
         <Route exact path='/' component={Login}/>
         <PrivateRoute exact path='/clients' component={Clients} /> 
