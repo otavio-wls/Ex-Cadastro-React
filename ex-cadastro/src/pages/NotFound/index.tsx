@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) =>({
   },
   divContainer:{
     width: '95%',
+    fontFamily: 'ultra, serif',
     justifyContent: 'space-between',
     marginTop: '150px',    
     display: 'flex',    
@@ -33,7 +34,7 @@ export default function NotFound(){
   const classes = useStyles();
   return(
     <>
-    <Header />
+    <Header />    
     <div style={{width: '100%', alignItems: 'center'}}>
       <div className={classes.divContainer}>
         <img src={lupa} alt='lupa' className={classes.img} />
