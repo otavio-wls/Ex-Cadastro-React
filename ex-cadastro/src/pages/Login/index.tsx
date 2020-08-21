@@ -1,13 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
-// import { useFormik } from 'formik';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import {withRouter,useHistory} from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
-import { useForm } from 'react-hook-form';
 
 function Copyright() {
   return (
@@ -81,10 +79,9 @@ const useStyles = makeStyles((theme) =>({
   }, 
 }))
 
-const  Login = () => {
 
-  const {register, handleSubmit} = useForm();
-
+const  Login = () => { 
+  
   const history = useHistory();
   const classes = useStyles();      
   const [email, setEmail] = useState('');
@@ -120,10 +117,9 @@ const  Login = () => {
                 <LockOutlinedIcon />
               </Avatar >                
               <Typography component='h2' className={classes.title}>Olá, seja bem vindo</Typography>
-                <form className={classes.form} noValidate onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}>
+                <form className={classes.form} noValidate>                  
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
-                    name="email"
-                    inputRef={register}
+                    name="email"                    
                     value={email}
                     error={email ===''}
                     helperText={email === ''? 'O email não pode ficar em branco': ''}
