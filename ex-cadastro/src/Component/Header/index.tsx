@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   root: {
-    // flexGrow: 1,
+    maxWidth: '100%',
+    flexGrow: 1,
   },
   appBar: {
     display: 'flex',
@@ -34,7 +35,6 @@ export default function Header() {
           <Link to='/'><Button className={classes.button} color="inherit">Login</Button></Link>
         </Toolbar>
       </AppBar>  
-    </div>
-    
+    </div>    
   );
 }
