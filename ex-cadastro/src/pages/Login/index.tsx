@@ -7,6 +7,7 @@ import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import {withRouter,useHistory} from 'react-router-dom';
 import { CssBaseline, Typography, makeStyles, TextField, Button, Grid, Box, Paper } from '@material-ui/core';
+import { useForm } from 'react-hook-form';
 
 function Copyright() {
   return (
@@ -24,6 +25,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) =>({
   root: {
     height: '100vh',    
+    maxWidth: '100%'
   },  
   avatar : {
     margem : theme.spacing(1),
@@ -39,6 +41,9 @@ const useStyles = makeStyles((theme) =>({
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+  },
+  gridItem:{
+    maxWidth: '100%'
   },
   paper: {   
     margin : theme.spacing(9.5, 15),
@@ -71,32 +76,19 @@ const useStyles = makeStyles((theme) =>({
     display: 'flex',
     marginTop: '15px',    
     alignItems: 'center',
-    width: '90%',
+    width: '100%',
     justifyContent: 'space-between',
   }, 
 }))
 
-// function validate(values) {
-//   const errors = {};
-
-//   if(values.email.lenght === 0){
-//     errors.email = 'O email não pode ficar em branco'; 
-//   }
-
-//   return errors;
-// }
-
 const  Login = () => {
-  // const errors = {
-  //   email: 'O email não pode ficar em branco',
-  //   password: 'A senha não pode ficar em branco',
-  // }
-  const history = useHistory();
 
-  const classes = useStyles();     
-  
+  const {register, handleSubmit} = useForm();
+
+  const history = useHistory();
+  const classes = useStyles();      
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');   
 
   async function logar(){    
     if(email.length ===0 || password.length === 0 ){      
@@ -106,7 +98,6 @@ const  Login = () => {
     try{
       const response = await api.post('users/login', {name: 'admin@', email: email , password: password})
       showToast({type: 'success', message: `Seja bem vindo, ${response.data.user.name}`})
-      console.log(response.data);
       localStorage.setItem('token', response.data.token);   
       history.push('/clients');              
       } catch(error) {
@@ -123,15 +114,16 @@ const  Login = () => {
         <CssBaseline />             
           <Grid container component="main" className={classes.root}>
             <Grid item xs={false} sm={false} md={6} className={classes.image} />                            
-            < Grid  item  xs = { 12}  sm = { 12 }  md = { 6 }  component = { Paper }  elevation = { 6 }  square >
+            < Grid  item xs ={12}  sm={12}  md={6}  component={Paper}  elevation={6} square className={classes.gridItem} >
               <div className={classes.paper}>
               < Avatar  className = {classes.avatar}>
                 <LockOutlinedIcon />
               </Avatar >                
               <Typography component='h2' className={classes.title}>Olá, seja bem vindo</Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}>
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                     name="email"
+                    inputRef={register}
                     value={email}
                     error={email ===''}
                     helperText={email === ''? 'O email não pode ficar em branco': ''}
@@ -150,7 +142,7 @@ const  Login = () => {
                     autoComplete="senha"
                     autoFocus/>
                 </form>
-                <ToastAnimated />
+                <ToastAnimated />                
                 <Button onClick={logar} type='submit' fullWidth variant='contained' className={classes.submit}>
                   Entrar</Button>
                   <div className={classes.optionsLogin}>
@@ -159,7 +151,7 @@ const  Login = () => {
                   </div>       
               <Box mt={5}>
                 <Copyright />
-              </Box>         
+              </Box>                       
             </div>                             
          </Grid>            
         </Grid>
