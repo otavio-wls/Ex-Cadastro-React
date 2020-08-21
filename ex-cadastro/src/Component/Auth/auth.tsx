@@ -1,11 +1,14 @@
 const  Auth  =  localStorage.getItem('token') ;
 
-export  const  isLogin  =  ( )  =>  {
-    if  (Auth )  {
-        return  true ;
+
+function isLogin() {
+  console.log(Auth)  ;
+  if(Auth) {
+        return  true ;        
     }else 
     return  false ;
 }
+export default isLogin;
 
 // export  const Auth = () => {
 //     const token = localStorage.getItem('token');
