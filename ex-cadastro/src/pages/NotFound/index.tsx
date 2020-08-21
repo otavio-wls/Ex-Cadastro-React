@@ -1,9 +1,15 @@
+import './style.css';
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
 import Header from '../../Component/Header/index';
+import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 import lupa from '../../assets/lupa.png';
 
 const useStyles = makeStyles((theme) =>({
+  body:{
+    backgroundColor: '#B22222'
+  },
   divContainer:{
     width: '95%',
     justifyContent: 'space-between',
@@ -11,7 +17,7 @@ const useStyles = makeStyles((theme) =>({
     display: 'flex',    
   },
   text:{
-    marginTop: '200px',
+    marginTop: '150px',
     fontSize: '45px',
     color: '#ff0000',
   },
@@ -23,17 +29,28 @@ const useStyles = makeStyles((theme) =>({
   }
 }));
 
-
 export default function NotFound(){
   const classes = useStyles();
   return(
+    <>
+    <Header />
     <div style={{width: '100%', alignItems: 'center'}}>
-      <Header />
       <div className={classes.divContainer}>
         <img src={lupa} alt='lupa' className={classes.img} />
-        <h1 className={classes.text}>Erro 404: Página não encontrada</h1>        
+        <div>
+          <h1 className={classes.text}>Erro 404: Página não encontrada</h1>                
+          <Link to='/'><Button
+           style={{
+            textAlign: 'center',
+            marginTop: '15px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+           }}>
+             Voltar para o inicio
+          </Button></Link>
+        </div>        
       </div>      
-      
     </div>
+    </>
   );
 }
