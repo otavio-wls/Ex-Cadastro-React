@@ -8,10 +8,11 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
   },
   appBar: {
     display: 'flex',
+    position: 'fixed',
     backgroundColor: '#00008B',
   },
   title:{
