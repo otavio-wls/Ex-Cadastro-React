@@ -1,19 +1,11 @@
 import React from 'react';
-import { isLogin } from '../Component/Auth/auth';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from '../pages/Login';
 import Clients from '../pages/Client';
 import Cadastro from '../pages/Cadastro';
 import NotFound from '../pages/NotFound/index';
 import {history} from '../history';
 
-//  const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render={props => (
-//     isLogin()? (
-//       <Component {...props} />
-//     ) : <Redirect to={{pathname: "/", state: {from: props.location}}}/>    
-//     )} />
-//   );
 
 export default function Routes() {
 
