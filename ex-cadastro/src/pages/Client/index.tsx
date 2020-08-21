@@ -5,7 +5,6 @@ import Header from '../../Component/Header/index';
 import Footer from '../../Component/Footer/index';
 import {withRouter} from 'react-router-dom';
 
-
 const useStyles = makeStyles((theme) =>({
   styleCliente:{
     marginLeft: '55px',
@@ -28,11 +27,12 @@ const useStyles = makeStyles((theme) =>({
 function Clients() {
   const classes = useStyles();
   const [clients, setClients] = useState<Array<any>>([]);
-
+  
   useEffect(() => {
     getClients();
+    
   }, []);
-
+  
   async function getClients(){
   
     try{
@@ -41,7 +41,7 @@ function Clients() {
       console.log(resposta.data);
       const client = resposta.data;
       setClients([...client]);
-      console.log(client);
+      console.log(client);      
     } catch(error) {
       console.log(error);
     };              
