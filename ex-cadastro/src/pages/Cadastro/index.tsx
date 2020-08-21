@@ -44,6 +44,9 @@ export default function ValidationTextFields() {
   const [email, setEmail] = useState('');
   const [password, setPassWord] = useState('');
   const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [contact, setContact] = useState('');
+  const [contact2, setContact2] = useState('');
 
   async function cadastrar() {
     if(email.length === 0 || password.length === 0 || name.length === 0 ){
@@ -53,10 +56,16 @@ export default function ValidationTextFields() {
     try{
       const resposta = await api.post('users', {name: name, email: email, password: password})
       console.log(resposta.data);
-      toast.success('Cadastro feito com sucesso');
+      toast.success('Cadastro feito com sucesso');      
     } catch(error) {
       toast.error('Houve algum erro, tente novamente');      
     }    
+    setEmail('');
+    setPassWord('');
+    setName('');
+    setAddress('');
+    setContact('');
+    setContact2('');
   }
 
   return (
@@ -69,30 +78,39 @@ export default function ValidationTextFields() {
         <form>
           <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
             name="name"
+            value={name}
             onChange={e => setName(e.target.value)}
             autoComplete="name"
             autoFocus/>
           <TextField variant='outlined' margin='normal' required fullWidth id="email" label="Email"
             name="email"
+            value={email}
             onChange={e => setEmail(e.target.value)}
             autoComplete="email"
             autoFocus/>
           <TextField variant='outlined' margin='normal' type='password' required fullWidth id="senha" label="Senha"
             name="senha"
+            value={password}
             onChange={e => setPassWord(e.target.value)}
             autoComplete="senha"
             autoFocus/>
           <TextField variant='outlined' margin='normal' required fullWidth id="endereco" label="Endereço"
             name="endereco"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
             autoComplete="endereco"
             autoFocus/>                
           <TextField variant='outlined' margin='normal'  type='number' required  id="telefone" label="Telefone"
             name="telefone"
+            value={contact}
+            onChange={e => setContact(e.target.value)}
             autoComplete="telefone"
             style={{marginRight: '5px'}}
             autoFocus/>                
           <TextField variant='outlined' margin='normal'  type='number' required   id="celular" label="Celular"
             name="celular"
+            value={contact2}
+            onChange={e => setContact2(e.target.value)}
             style={{marginRight: '5px'}}          
             autoComplete= "celular"
             autoFocus/>                
