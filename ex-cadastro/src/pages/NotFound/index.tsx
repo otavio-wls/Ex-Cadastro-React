@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import lupa from '../../assets/lupa.png';
+import wifi from '../../assets/wifi.png';
 
 const useStyles = makeStyles((theme) =>({
   '@body':{
@@ -14,19 +15,31 @@ const useStyles = makeStyles((theme) =>({
     width: '95%',
     fontFamily: 'ultra, serif',
     justifyContent: 'space-between',
-    marginTop: '150px',    
+    marginTop: '85px',   
+    marginLeft: '150px',   
     display: 'flex',    
   },
   text:{
-    marginTop: '150px',
+    marginTop: '75px',
+    textAlign: 'center',
     fontSize: '45px',
     color: '#ff0000',
   },
-  img:{
-    width: '450px',
-    height: '450px',
+  link:{
+    width: '100%',    
+    marginRight: '50%'
+  },
+  lupa:{
+    width: '350px',
+    height: '350px',
     marginTop: '10px',
     marginLeft: '50px',
+  },
+  wifi:{
+    width: '175px',
+    height: "156px",
+    marginTop: '139px',
+    marginRight: '500px',  
   }
 }));
 
@@ -36,20 +49,15 @@ export default function NotFound(){
     <>
     <Header />    
     <div style={{width: '100%', alignItems: 'center'}}>
-      <div className={classes.divContainer}>
-        <img src={lupa} alt='lupa' className={classes.img} />        
-        <div>
-          <h1 className={classes.text}>Erro 404: Página não encontrada</h1>                
-          <Link to='/'><Button
-           style={{
-            textAlign: 'center',
-            marginTop: '15px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-           }}>
-             Voltar para o inicio
-          </Button></Link>
-        </div>        
+      <div>
+        <h1 className={classes.text}>Erro 404: Página não encontrada</h1>                
+        <Link to='/'><Button className={classes.link} >
+          Voltar para o inicio
+        </Button></Link>
+      </div>        
+      <div className={classes.divContainer}>     
+        <img src={lupa} alt='lupa' className={classes.lupa} />
+        <img src={wifi} alt='wifi' className={classes.wifi} />
       </div>      
     </div>
     </>
