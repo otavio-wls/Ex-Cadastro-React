@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import api from '../../api/api';
+// import { useFormik } from 'formik';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import ToastAnimated, { showToast } from '../../Toastify/index';
 import { Link } from 'react-router-dom';
 import {withRouter,useHistory} from 'react-router-dom';
@@ -22,6 +25,10 @@ const useStyles = makeStyles((theme) =>({
   root: {
     height: '100vh',    
   },  
+  avatar : {
+    margem : theme.spacing(1),
+    backgroundColor: '#00008B',
+  } ,
   title:{
     color: '#000080',
   },
@@ -68,8 +75,22 @@ const useStyles = makeStyles((theme) =>({
     justifyContent: 'space-between',
   }, 
 }))
-const  Login = () => {
 
+// function validate(values) {
+//   const errors = {};
+
+//   if(values.email.lenght === 0){
+//     errors.email = 'O email não pode ficar em branco'; 
+//   }
+
+//   return errors;
+// }
+
+const  Login = () => {
+  // const errors = {
+  //   email: 'O email não pode ficar em branco',
+  //   password: 'A senha não pode ficar em branco',
+  // }
   const history = useHistory();
 
   const classes = useStyles();     
@@ -104,7 +125,10 @@ const  Login = () => {
             <Grid item xs={false} sm={false} md={6} className={classes.image} />                            
             < Grid  item  xs = { 12}  sm = { 12 }  md = { 6 }  component = { Paper }  elevation = { 6 }  square >
               <div className={classes.paper}>
-                <Typography component='h1' variant='h4' className={classes.title}>Seja bem vindo</Typography>
+              < Avatar  className = {classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar >                
+              <Typography component='h2' className={classes.title}>Olá, seja bem vindo</Typography>
                 <form className={classes.form} noValidate>
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                     name="email"
@@ -115,6 +139,7 @@ const  Login = () => {
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
                     autoFocus/>
+                    {/* {errors.email && <span>{errors.email}</span>} */}
                   <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
                     name="senha"
                     value={password}
@@ -141,6 +166,4 @@ const  Login = () => {
       </Fragment>
   );
 }
-
-
 export default withRouter(Login);
