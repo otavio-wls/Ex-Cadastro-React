@@ -88,7 +88,7 @@ const  Login = () => {
   const history = useHistory();
   const classes = useStyles();      
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');   
+  const [password, setPassword] = useState('');    
 
   async function logar(){    
     if(email.length ===0 || password.length === 0 ){      
