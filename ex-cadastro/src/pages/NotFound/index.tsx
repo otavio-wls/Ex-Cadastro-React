@@ -8,7 +8,7 @@ import lupa from '../../assets/lupa.png';
 
 const useStyles = makeStyles((theme) =>({
   '@body':{
-    backgroundColor: '#B22222'
+    backgroundColor: '#8B0000'
   },
   divContainer:{
     width: '95%',
@@ -37,7 +37,7 @@ export default function NotFound(){
     <Header />    
     <div style={{width: '100%', alignItems: 'center'}}>
       <div className={classes.divContainer}>
-        <img src={lupa} alt='lupa' className={classes.img} />
+        <img src={lupa} alt='lupa' className={classes.img} />        
         <div>
           <h1 className={classes.text}>Erro 404: Página não encontrada</h1>                
           <Link to='/'><Button
