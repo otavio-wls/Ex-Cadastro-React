@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 import lupa from '../../assets/lupa.png';
 
 const useStyles = makeStyles((theme) =>({
-  body:{
+  '@body':{
     backgroundColor: '#B22222'
   },
   divContainer:{
