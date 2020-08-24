@@ -1,4 +1,3 @@
-import './index.css';
 import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { ToastContainer } from 'react-toastify';
