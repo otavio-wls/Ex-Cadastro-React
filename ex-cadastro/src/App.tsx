@@ -6,7 +6,10 @@ import Routes from './routes/routes';
 function App() {
   const theme = createMuiTheme({
     palette:{
-      success:{
+      primary:{
+        main: '#1E90FF',
+      },      
+      secondary:{
         main: '#00008B',
       }
     }
@@ -17,7 +20,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes />
     </ThemeProvider>
-
     </div>
   );
 }
