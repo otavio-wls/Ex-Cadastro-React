@@ -11,7 +11,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" to="#">
+      <Link style={{textDecoration: 'none', color: '#00008B'}} to="#">
         Photografy Premium
       </Link>{' '}
       {new Date().getFullYear()}
@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme) =>({
   },  
   avatar : {
     margem : theme.spacing(1),
-    backgroundColor: '#00008B',
+    backgroundColor: '#1E90FF',
   } ,
   title:{
-    color: '#000080',
+    color: '#1E90FF',
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) =>({
   },
   submit:{
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#00008B',
+    backgroundColor: '#1E90FF',
     color: '#fff',
   },
   optionsLogin: {
@@ -79,15 +79,16 @@ const useStyles = makeStyles((theme) =>({
   }, 
 }))
 
-
-const  Login = () => { 
-  const [error, setError] = useState('');
+const  Login = () => {  
   const history = useHistory();
   const classes = useStyles();      
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');    
+  
 
-  async function logar(){    
+  async function logar(){        
     if(email.length ===0 || password.length === 0 ){      
       showToast({type: "error", message:'Os campos não podem ficar em branco'});      
       return;
@@ -120,18 +121,16 @@ const  Login = () => {
                 <form className={classes.form} noValidate>                  
                   <TextField variant='outlined' margin='normal'  required fullWidth id="email" label="Email"
                     name="email"                    
-                    value={email}
-                    error={email ===''}
-                    helperText={email === ''? 'O email não pode ficar em branco': ''}
+                    value={email}                   
+                    color='primary'
                     className={classes.textField}
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
                     autoFocus/>                    
                   <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
                     name="senha"
-                    value={password}
-                    error={password ===''}
-                    helperText={password ===''? 'A senha não pode ficar em branco': ''}
+                    value={password}                 
+                    color='primary'
                     className={classes.textField}
                     onChange={e => setPassword(e.target.value)}
                     autoComplete="senha"
@@ -142,7 +141,7 @@ const  Login = () => {
                   Entrar</Button>
                   <div className={classes.optionsLogin}>
                     <Button href="#text-buttons" color="primary">Esqueci minha senha</Button>
-                    <Link to='/cadastro'><Button color="primary">Cadastro</Button></Link>
+                    <Link to='/cadastro' style={{textDecoration: 'none'}}><Button color="primary">Cadastro</Button></Link>
                   </div>       
               <Box mt={5}>
                 <Copyright />
