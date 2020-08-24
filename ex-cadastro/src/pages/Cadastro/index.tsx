@@ -1,8 +1,8 @@
 import './style.css';
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
-import { TextField, makeStyles, Grid, Typography, Button, Card, CardContent } from '@material-ui/core';
+import { TextField, makeStyles, Grid, Typography, Button, Card, CardContent, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#1E90FF'
   },
   paper:{
-    width: '75%',    
+    width: '75%',        
     height: '15%',
     marginTop: '5px',    
     marginLeft: '10%',    
@@ -29,12 +29,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start'
   },
   containerForm: {    
-    display: 'flex',
-    
+    display: 'flex',  
+    marginTop: '8%',
     marginRight: 'auto',
     marginLeft: 'auto', 
-    maxWidth: '100%',        
-    marginTop: '5%',    
+    maxWidth: '100%',            
   },  
   buttons:{
     display: 'flex',        
@@ -79,7 +78,7 @@ export default function ValidationTextFields() {
   } 
 
   return (
-    <Fragment>    
+    <Container maxWidth='xl'>    
     <Grid container component='main' className={classes.containerForm}>     
     <Grid item xs={10}  sm={ 'auto' }  md={7} lg={7}>
       <div className={classes.paper}>
@@ -136,6 +135,6 @@ export default function ValidationTextFields() {
         </Card>
       </Grid>
     </Grid>
-  </Fragment>
+  </Container>
   );
 }
