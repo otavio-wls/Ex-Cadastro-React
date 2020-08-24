@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) =>({
 
 
 const  Login = () => { 
-  
+  const [error, setError] = useState('');
   const history = useHistory();
   const classes = useStyles();      
   const [email, setEmail] = useState('');
@@ -126,8 +126,7 @@ const  Login = () => {
                     className={classes.textField}
                     onChange={e => setEmail(e.target.value)}
                     autoComplete="email"
-                    autoFocus/>
-                    {/* {errors.email && <span>{errors.email}</span>} */}
+                    autoFocus/>                    
                   <TextField variant='outlined' type='password' margin='normal' required fullWidth id="senha" label="Senha"
                     name="senha"
                     value={password}
