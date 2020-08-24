@@ -1,6 +1,8 @@
 import './style.css';
 import React, { useState } from 'react';
 import api from '../../api/api';
+import Header from '../../Component/Header';
+import Footer from '../../Component/Footer';
 import { toast } from 'react-toastify';
 import { TextField, makeStyles, Grid, Typography, Button, Card, CardContent, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -78,6 +80,8 @@ export default function ValidationTextFields() {
   } 
 
   return (
+    <>
+    <Header />
     <Container maxWidth='xl'>    
     <Grid container component='main' className={classes.containerForm}>     
     <Grid item xs={10}  sm={ 'auto' }  md={7} lg={7}>
@@ -85,7 +89,7 @@ export default function ValidationTextFields() {
         <Typography component='h1' variant='h4' style={{color: '#1E90FF'}}>Cadastro</Typography>
         <form>
           <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
-            name="name"
+            name="name"            
             color='primary'
             value={name}
             onChange={e => setName(e.target.value)}            
@@ -136,5 +140,7 @@ export default function ValidationTextFields() {
       </Grid>
     </Grid>
   </Container>
+  <Footer />
+  </>
   );
 }
