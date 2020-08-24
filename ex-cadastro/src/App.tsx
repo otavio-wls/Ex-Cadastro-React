@@ -1,13 +1,23 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import Routes from './routes/routes';
 
 
 function App() {
+  const theme = createMuiTheme({
+    palette:{
+      success:{
+        main: '#00008B',
+      }
+    }
+  });
+
   return (
-    <div className="App"> 
-      <CssBaseline />      
+    <div className="App">       
+    <ThemeProvider theme={theme}>
       <Routes />
+    </ThemeProvider>
+
     </div>
   );
 }
