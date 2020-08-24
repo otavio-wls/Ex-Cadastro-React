@@ -63,7 +63,9 @@ const useStyles = makeStyles((theme) =>({
     marginTop: theme.spacing(1),
   },
   textField:{
-    color: '#3fa7d6',
+    // '&:hover': {
+    //   background: '#87CEFA',      
+    // }
   },
   submit:{
     margin: theme.spacing(3, 0, 2),
@@ -81,12 +83,9 @@ const useStyles = makeStyles((theme) =>({
 
 const  Login = () => {  
   const history = useHistory();
-  const classes = useStyles();      
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const classes = useStyles();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');    
-  
+  const [password, setPassword] = useState('');
 
   async function logar(){        
     if(email.length ===0 || password.length === 0 ){      
