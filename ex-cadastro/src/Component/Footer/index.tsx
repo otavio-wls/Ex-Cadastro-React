@@ -30,17 +30,8 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',    
-    backgroundColor: '#00008B',     
-  },  
-  // redesSociais:{
-  //   display: 'flex',
-  //   listStyle: 'none',
-  //   textDecoration: 'none',
-  //   color: '#ffffff',
-  //   marginLeft: '50%',
-  //   marginRight: '50%',
-  //   alignItems: 'center',
-  // }
+    backgroundColor: '#1E90FF',     
+  },    
 }));
 
 export default function Footer() {
