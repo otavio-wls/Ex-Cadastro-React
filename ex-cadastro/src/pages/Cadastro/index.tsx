@@ -1,8 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import api from '../../api/api';
 import { toast } from 'react-toastify';
-import Header from '../../Component/Header/index';
-import Footer from '../../Component/Footer/index';
 import { TextField, makeStyles, Grid, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '5px',    
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginBottom: '65px',
+    marginBottom: '10px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start'
@@ -46,7 +44,7 @@ export default function ValidationTextFields() {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contact, setContact] = useState('');
-  const [contact2, setContact2] = useState('');
+  const [contact2, setContact2] = useState(''); 
 
   async function cadastrar() {
     if(email.length === 0 || password.length === 0 || name.length === 0 ){
@@ -66,11 +64,11 @@ export default function ValidationTextFields() {
     setAddress('');
     setContact('');
     setContact2('');
-  }
+  } 
 
   return (
     <Fragment>
-    <Header />    
+    
     <Grid container component='main' className={classes.containerForm}>     
     <Grid item xs={10}  sm={ 'auto' }  md={ 'auto' }>
       <div className={classes.paper}>
@@ -120,8 +118,7 @@ export default function ValidationTextFields() {
         </div>        
       </div>       
       </Grid>
-    </Grid>
-    <Footer />
+    </Grid>    
   </Fragment>
   );
 }
