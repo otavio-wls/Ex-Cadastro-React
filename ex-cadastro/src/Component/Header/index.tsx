@@ -3,19 +3,19 @@ import { AppBar, Toolbar, Typography, makeStyles, Button } from '@material-ui/co
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
-  '@global' : {
+  '@global':{
     margin: 0,
     padding: 0,
   },
-  root: {
+  root:{
     maxWidth: '100%',
     flexGrow: 1,
   },
-  appBar: {
+  appBar:{
     display: 'flex',
     position: 'fixed',
     overflow: 'auto',
-    backgroundColor: '#00008B',
+    backgroundColor: '#1E90FF',
   },
   title:{
     flexGrow: 1,
@@ -33,7 +33,7 @@ export default function Header() {
       <AppBar className={classes.appBar}>
         <Toolbar>
           <Typography className={classes.title}>Photografy Premium</Typography>          
-          <Link to='/'><Button className={classes.button} color="inherit">Login</Button></Link>
+          <Link style={{textDecoration: 'none'}} to='/'><Button className={classes.button} color="inherit">Login</Button></Link>
         </Toolbar>
       </AppBar>  
     </div>    
