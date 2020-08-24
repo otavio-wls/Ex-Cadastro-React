@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     display: 'flex',
     position: 'fixed',
+    overflow: 'auto',
     backgroundColor: '#00008B',
   },
   title:{
