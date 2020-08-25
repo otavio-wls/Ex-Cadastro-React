@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },    
   cardPrincipal:{
-    backgroundColor: '#1E90FF'
+    backgroundColor: '#1E90FF',    
   },
   paper:{
-    width: '75%',        
+    width: '70%',        
     height: '100%',
     marginTop: '5px',    
     marginLeft: '10%',    
@@ -31,17 +31,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start'
   },
   cardForm:{
-    backgroundColor: 'rgb(32,32,36)'
+    // backgroundColor: 'rgb(32,32,36)'
   },
   containerForm: {    
     display: 'flex',      
+    paddingTop: '10%',
     marginRight: 'auto',
-    marginLeft: 'auto', 
-    maxWidth: '100%',            
-  },  
-  buttons:{
-    display: 'flex',        
-  },
+    marginLeft: 'auto',
+    maxWidth: '100%',
+  },    
   submit:{
     margin: theme.spacing(3, 0, 2),
     backgroundColor: '#1E90FF',
@@ -49,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },  
   description:{
     width: '30%',
-    marginTop: '5.8%'
+    marginTop: '4.8%'
   }
 }));
 
@@ -82,15 +80,15 @@ export default function ValidationTextFields() {
   } 
 
   return (
-    <div style={{width:'100%', height: '100%', backgroundColor: 'rgb(18,18,20)'}}>
-    
+    <div style={{width:'100%', height: '100vh', backgroundColor: '#fff'}}>
+    <Header />
     <Container maxWidth='xl'>    
     <Grid container component='main' className={classes.containerForm}>     
-    <Grid item xs={10}  sm={ 'auto' }  md={7} lg={7}>
-      <div className={classes.paper}>
-        <Typography component='h1' variant='h4' style={{color: '#1E90FF'}}>Cadastro</Typography>        
-        <Card className={classes.cardForm}>
+    <Grid item xs={12}  sm={ 'auto' }  md={7} lg={7}>
+      <div className={classes.paper}>            
+        <Card className={classes.cardForm}>          
           <CardContent>
+            <Typography component='h1' variant='h4' style={{color: '#1E90FF'}}>Cadastro</Typography>    
             <form>
               <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
                 name="name"            
@@ -107,13 +105,7 @@ export default function ValidationTextFields() {
                 name="senha"
                 value={password}
                 onChange={e => setPassWord(e.target.value)}            
-                autoFocus/>          
-              <TextField variant='outlined' margin='normal'  type='number' fullWidth required  id="telefone" label="Telefone"
-                name="telefone"
-                value={contact}
-                onChange={e => setContact(e.target.value)}            
-                style={{marginRight: '5px'}}
-                autoFocus/>                
+                autoFocus/>                        
               <TextField variant='outlined' margin='normal'  type='number' required fullWidth  id="celular" label="Celular"
                 name="celular"
                 value={contact2}
@@ -121,14 +113,12 @@ export default function ValidationTextFields() {
                 style={{marginRight: '5px'}}                      
                 autoFocus/>                
             </form>
+            <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
           </CardContent>
-        </Card>
-        <div className={classes.buttons}>
-          <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
-        </div>                
+        </Card>        
       </div>             
       </Grid>        
-      <Grid item className={classes.description}>
+      <Grid item xs={ false }  sm={ false }  md={4} lg={4} className={classes.description}>
         <Card className={classes.cardPrincipal}>
           <CardContent>        
             <h1 style={{marginBottom: '25px', color: '#ffffff', fontWeight: 'bold'}}>Photografy Premium</h1>
@@ -145,7 +135,7 @@ export default function ValidationTextFields() {
         </Card>
       </Grid>
     </Grid>
-  </Container>  
+  </Container>    
   </div>
   );
 }
