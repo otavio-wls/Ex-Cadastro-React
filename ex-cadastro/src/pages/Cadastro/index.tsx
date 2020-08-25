@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '5px',    
     marginLeft: '10%',    
     marginBottom: '10px',
-    display: 'flex',
+    display: 'flex',    
     flexDirection: 'column',
     alignItems: 'flex-start'
   },
@@ -36,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
   containerForm: {    
     display: 'flex',      
     paddingTop: '10%',
-    marginRight: 'auto',
+    marginRight: 'auto',    
     marginLeft: 'auto',
+    minHeight: '100vh',
     maxWidth: '100%',
   },    
   submit:{
@@ -56,9 +57,8 @@ export default function ValidationTextFields() {
 
   const [email, setEmail] = useState('');
   const [password, setPassWord] = useState('');
-  const [name, setName] = useState('');  
-  const [contact, setContact] = useState('');
-  const [contact2, setContact2] = useState(''); 
+  const [name, setName] = useState('');    
+  const [contact, setContact] = useState(''); 
 
   async function cadastrar() {
     if(email.length === 0 || password.length === 0 || name.length === 0 ){
@@ -75,8 +75,7 @@ export default function ValidationTextFields() {
     setEmail('');
     setPassWord('');
     setName('');    
-    setContact('');
-    setContact2('');
+    setContact('');    
   } 
 
   return (
@@ -108,8 +107,8 @@ export default function ValidationTextFields() {
                 autoFocus/>                        
               <TextField variant='outlined' margin='normal'  type='number' required fullWidth  id="celular" label="Celular"
                 name="celular"
-                value={contact2}
-                onChange={e => setContact2(e.target.value)}
+                value={contact}
+                onChange={e => setContact(e.target.value)}
                 style={{marginRight: '5px'}}                      
                 autoFocus/>                
             </form>
@@ -135,7 +134,8 @@ export default function ValidationTextFields() {
         </Card>
       </Grid>
     </Grid>
-  </Container>    
+  </Container>
+  <Footer />
   </div>
   );
 }
