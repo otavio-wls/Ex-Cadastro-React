@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) =>({
   },
   paper: {   
     margin : theme.spacing(9.5, 15),
+    paddingTop: '10%',
     display : 'flex',
     flexDirection : 'column',
     alignItems : 'center',
@@ -106,8 +107,8 @@ const  Login = () => {
   }
 
   return(
-      <Fragment>   
-        <ToastAnimated />
+    <Fragment>   
+      <ToastAnimated />
         <CssBaseline />             
           <Grid container component="main" className={classes.root}>
             <Grid item xs={false} sm={false} md={6} className={classes.image} />                            
@@ -147,8 +148,8 @@ const  Login = () => {
               </Box>                       
             </div>                             
          </Grid>            
-        </Grid>
-      </Fragment>
+      </Grid>
+    </Fragment>
   );
 }
 export default withRouter(Login);
