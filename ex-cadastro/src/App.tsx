@@ -10,7 +10,7 @@ function App() {
         main: '#1E90FF',
       },      
       secondary:{
-        main: '#00008B',
+        main: '#ffffff',
       }
     }
   });
