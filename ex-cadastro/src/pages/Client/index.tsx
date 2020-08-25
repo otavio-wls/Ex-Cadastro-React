@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) =>({
   },  
   divTable:{
     width: '75%',
+    minHeight: '100vh',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
