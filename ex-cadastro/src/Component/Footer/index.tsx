@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
-import { Facebook, Instagram, Twitter, LocationOn,Phone, Email, Copyright } from '@material-ui/icons';
+import { Facebook, Instagram, Twitter, LocationOn,Phone, Email } from '@material-ui/icons';
 import './style.css';
 
 const useStyles = makeStyles((theme) =>({
@@ -48,7 +48,7 @@ export default function Footer() {
                   <p style={{textAlign: 'left', fontSize: '15px', marginTop: '6px', marginLeft: '5px'}}>photografypremium@oficial.com</p>
                 </div>                
               </div>              
-            </div>  
+            </div>
             <div style={{width: '40%', textAlign: 'justify', marginLeft: 'auto'}}>
               <div style={{width: '100%'}}>
                 <h2 style={{paddingTop: '7%', marginBottom: '10px'}}>Sobre nossa equipe</h2>
@@ -60,10 +60,9 @@ export default function Footer() {
                 <Twitter />
               </div>
             </div>
-          </div>          
-          <div style={{textAlign: 'center', marginTop: '5px', display: 'flex'}}>
-            <Copyright />
-            <p>Photografy Premium 2020</p>
+          </div>                    
+          <div>
+            <p style={{textAlign: 'center', color: '#1E90FF', fontWeight: 'bold'}}>&copy;Photografy Premium 2020</p>
           </div>
         </Grid>
       </Grid>      
