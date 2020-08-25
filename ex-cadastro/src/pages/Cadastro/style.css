@@ -1,3 +1,7 @@
 .container{
-  background-image: image('../../assets/background cadastro.jpg');
+  width: 100%;
+  height: auto;
+  background-color: #1E90FF;
+  text-align: center; 
+  margin-top: 'auto';
 }
