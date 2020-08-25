@@ -44,7 +44,10 @@ const useStyles = makeStyles((theme) =>({
     maxWidth: '100%'
   },
   paper: {   
-    margin : theme.spacing(9.5, 15),
+    marginTop: '76px',
+    marginBottom: '76px',
+    marginLeft: '50px',
+    marginRight: '50px',
     paddingTop: '10%',
     display : 'flex',
     flexDirection : 'column',
