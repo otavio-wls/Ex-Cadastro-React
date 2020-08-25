@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper:{
     width: '75%',        
-    height: '15%',
+    height: '100%',
     marginTop: '5px',    
     marginLeft: '10%',    
     marginBottom: '10px',
@@ -30,9 +30,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start'
   },
+  cardForm:{
+    backgroundColor: 'rgb(32,32,36)'
+  },
   containerForm: {    
-    display: 'flex',  
-    marginTop: '8%',
+    display: 'flex',      
     marginRight: 'auto',
     marginLeft: 'auto', 
     maxWidth: '100%',            
@@ -80,43 +82,47 @@ export default function ValidationTextFields() {
   } 
 
   return (
-    <>
-    <Header />
+    <div style={{width:'100%', height: '100%', backgroundColor: 'rgb(18,18,20)'}}>
+    
     <Container maxWidth='xl'>    
     <Grid container component='main' className={classes.containerForm}>     
     <Grid item xs={10}  sm={ 'auto' }  md={7} lg={7}>
       <div className={classes.paper}>
-        <Typography component='h1' variant='h4' style={{color: '#1E90FF'}}>Cadastro</Typography>
-        <form>
-          <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
-            name="name"            
-            color='primary'
-            value={name}
-            onChange={e => setName(e.target.value)}            
-            autoFocus/>
-          <TextField variant='outlined' margin='normal' required fullWidth id="email" label="Email"
-            name="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}            
-            autoFocus/>
-          <TextField variant='outlined' margin='normal' type='password' required fullWidth id="senha" label="Senha"
-            name="senha"
-            value={password}
-            onChange={e => setPassWord(e.target.value)}            
-            autoFocus/>          
-          <TextField variant='outlined' margin='normal'  type='number' fullWidth required  id="telefone" label="Telefone"
-            name="telefone"
-            value={contact}
-            onChange={e => setContact(e.target.value)}            
-            style={{marginRight: '5px'}}
-            autoFocus/>                
-          <TextField variant='outlined' margin='normal'  type='number' required fullWidth  id="celular" label="Celular"
-            name="celular"
-            value={contact2}
-            onChange={e => setContact2(e.target.value)}
-            style={{marginRight: '5px'}}                      
-            autoFocus/>                
-        </form>      
+        <Typography component='h1' variant='h4' style={{color: '#1E90FF'}}>Cadastro</Typography>        
+        <Card className={classes.cardForm}>
+          <CardContent>
+            <form>
+              <TextField variant='outlined' margin='normal' required fullWidth id="nome" label="Nome"
+                name="name"            
+                color='primary'
+                value={name}
+                onChange={e => setName(e.target.value)}            
+                autoFocus/>
+              <TextField variant='outlined' margin='normal' required fullWidth id="email" label="Email"
+                name="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}            
+                autoFocus/>
+              <TextField variant='outlined' margin='normal' type='password' required fullWidth id="senha" label="Senha"
+                name="senha"
+                value={password}
+                onChange={e => setPassWord(e.target.value)}            
+                autoFocus/>          
+              <TextField variant='outlined' margin='normal'  type='number' fullWidth required  id="telefone" label="Telefone"
+                name="telefone"
+                value={contact}
+                onChange={e => setContact(e.target.value)}            
+                style={{marginRight: '5px'}}
+                autoFocus/>                
+              <TextField variant='outlined' margin='normal'  type='number' required fullWidth  id="celular" label="Celular"
+                name="celular"
+                value={contact2}
+                onChange={e => setContact2(e.target.value)}
+                style={{marginRight: '5px'}}                      
+                autoFocus/>                
+            </form>
+          </CardContent>
+        </Card>
         <div className={classes.buttons}>
           <Button onClick={cadastrar} type='submit' fullWidth variant='contained'  className={classes.submit}>Cadastrar</Button>         
         </div>                
@@ -139,8 +145,7 @@ export default function ValidationTextFields() {
         </Card>
       </Grid>
     </Grid>
-  </Container>
-  <Footer />
-  </>
+  </Container>  
+  </div>
   );
 }
