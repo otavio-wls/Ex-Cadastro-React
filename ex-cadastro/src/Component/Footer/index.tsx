@@ -7,7 +7,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" style={{textAlign: 'center', color:'#ffffff'}}>
       {'Copyright © '}
-      <Link style={{textDecoration: 'none'}} color="inherit" to="https://material-ui.com/">
+      <Link style={{textDecoration: 'none'}} color="inherit" to="/">
         Photografy Premium
       </Link>{' '}
       {new Date().getFullYear()}
@@ -53,26 +53,3 @@ export default function Footer() {
   </div>
   );
 }
-
-
-
-// import './style.css';
-// import React from 'react';
-// import { FaYoutube, FaInstagram } from 'react-icons/fa';
-
-// export default function Footer() {
-//   return(
-//     <footer className='footer'>
-//       <div className='footer__social'>
-//         <p>
-//           <FaYoutube size="40" />
-//         </p>
-//         <p>
-//           <FaInstagram size="40" />
-//         </p>
-//       </div>
-//       <p className='footer__copyright'>Meu Copyright</p>
-//     </footer>
-
-//   );
-// }
