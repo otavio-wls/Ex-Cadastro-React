@@ -81,9 +81,9 @@ export default function ValidationTextFields() {
   return (
     <div style={{width:'100%', height: '100vh', backgroundColor: '#fff'}}>
     <Header />
-    <Container maxWidth='xl'>    
+    <Container maxWidth='xl' component='main'>    
     <Grid container component='main' className={classes.containerForm}>     
-    <Grid item xs={12}  sm={ 'auto' }  md={7} lg={7}>
+    <Grid item xs={12}  sm={ 7 }  md={7} lg={7}>
       <div className={classes.paper}>            
         <Card className={classes.cardForm}>          
           <CardContent>
